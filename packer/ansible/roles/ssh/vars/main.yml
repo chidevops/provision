@@ -1,0 +1,3 @@
+ssh_users:
+  - name: vagrant
+    key: "{{ lookup('file', 'id_rsa.pub') }}"

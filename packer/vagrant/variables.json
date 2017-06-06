@@ -1,0 +1,18 @@
+{
+    "aws_access_key": "{{user `aws_access_key`}}",
+    "aws_secret_key": "{{user `aws_secret_key`}}",
+    "ami_name": "packer-example-{{timestamp}}",
+    "user_name": "",
+    "test_ami_flag": "",
+    "ansible_playbooks_path": "",
+    "aws_cert_path": "",
+    "aws_key_path": "",
+    "source_ami_id": "ami-fce3c696",
+    "aws_account_id": "050532389887",
+    "aws_region": "us-east-1",
+    "ami_instance_type": "t2.micro",
+    "ami_description": "Packer automated build",
+    "playbook_file": "ansible/aws.playbook.yml",
+    "s3_bucket_name": "packer-ami",
+    "account_id": "{{ user `aws_account_id` }}"
+}

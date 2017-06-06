@@ -1,0 +1,12 @@
+ubuntu-xenial-16.04-cloudimg-console.log
+*.retry
+packer_cache/
+build/
+ssh_roles/*
+.DS_Store
+.vagrant/
+variables.yml
+*.box
+output-virtualbox-iso
+WORKSHOP.md
+answer0/

@@ -1,0 +1,36 @@
+{
+  "variables": {
+    "ansible_host": "default"
+  },
+  "builders":
+  [{
+    "type": "docker",
+    "image": "ubuntu:14.04",
+    "commit": "true",
+    "run_command": [
+      "-d",
+      "-i",
+      "-t",
+      "--name",
+      "{{user `ansible_host`}}",
+      "{{.Image}}",
+      "/bin/bash"
+    ]
+  }],
+  "provisioners":
+  [{
+    "type": "shell",
+    "inline": [
+        "apt-get -y update",
+        "apt-get install -y python-pip python-dev build-essential libssl-dev libffi-dev python-dev",
+        "easy_install pip",
+        "pip install ansible"
+    ]
+  }],
+  "post-processors":
+  [{
+    "type": "docker-tag",
+    "repository": "aleccunningham/demo",
+    "tag": "0.1"
+  }]
+}

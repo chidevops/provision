@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Remove the repositories provided in base image we don't need
+      shell: mv /etc/apt/sources.list.d /etc/apt/sources.list.d.save \
+             mkdir /etc/apt/sources.list.d
+
+    - name: Create pinning file for apt
+      copy:
+        src: files/sources.list
+        dest: /etc/apt/sources.list
+        owner: root
+        group: root
+        mode: 0644
