@@ -1,9 +1,0 @@
----
-- hosts: all
-  become: true
-  gather_facts: no
-  tasks:
-  - name: install ssh key
-    authorized_key: user=vagrant
-                    key="{{ lookup('files', '/home/vagrant/.ssh/id_rsa.pub') }}"
-                    state=present
