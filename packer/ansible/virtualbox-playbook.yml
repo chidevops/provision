@@ -4,45 +4,21 @@
   gather_facts: yes
   remote_user: vagrant
   tasks:
-     # SSH daemon configuration.
-    - name: Configure SSH daemon.
-      lineinfile:
-        dest: /etc/ssh/ssh_config
-        regexp: "{{ item.regexp }}"
-        line: "{{ item.line }}"
-        state: present
-      with_items:
-        - regexp: '^UseDNS'
-          line: 'UseDNS no'
-        - regexp: '^GSSAPIAuthentication'
-          line: 'GSSAPIAuthentication no'
-        - regexp: '^PermitRootLogin without-password'
-          line: 'PermitRootLogin without-password'
+    - name: Setup | set user password
+      shell: usermod -p $(echo '{{ createpassword }}' | openssl passwd -1 -stdin) {{ createuser }}
 
-    - name: Set up authorized_keys for the deploy user
-      authorized_key: user=vagrant
-                      state=present
-                      key="{{ item }}"
-      with_file:
-        - ssh_config/id_rsa.pub
+    - name: Setup | authorized key upload
+      authorized_key: user={{ createuser }}
+        key="{{ lookup('file', 'id_rsa.pub') }}"
+        path='/home/{{ createuser }}/.ssh/authorized_keys'
+        manage_dir=no
 
-    - name: Install common software
-      apt: "name={{ item }} state=installed"
-      with_items:
-        - apt-transport-https
-        - ca-certificates
-        - git
-        - wget
-        - curl
-        - vim
-        - ntp
-
-    - name: Set timezone to UTC
-      when: ansible_date_time.tz != 'UTC'
-      command: timedatectl set-timezone UTC
-
-    - name: Enable ntp service
-      service: >
-        name=ntp
-        enabled=yes
-        state=started
+    - name: Sudoers | update sudoers file and validate
+      lineinfile: "dest=/etc/sudoers
+        insertafter=EOF
+        line='{{ createuser }} ALL=(ALL) NOPASSWD: ALL'
+        regexp='{{ createuser }} ALL=(ALL) NOPASSWD: ALL'
+        state=present"
+  roles:
+    - common
+    - aws

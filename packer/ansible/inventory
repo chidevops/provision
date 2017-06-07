@@ -1,0 +1,7 @@
+[nodes]
+node1
+node2
+node3
+
+[localhost]
+127.0.0.1

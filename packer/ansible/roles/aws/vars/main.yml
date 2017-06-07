@@ -1,0 +1,9 @@
+---
+aws_cli_user:
+  - username: vagrant
+    state: present
+    awscli:
+      aws_region: us-east-1
+      aws_output_format: json
+      aws_access_key_id: "{{ user `aws_access_key` }}"
+      aws_secret_key: "{{ user `aws_secret_key` }}"

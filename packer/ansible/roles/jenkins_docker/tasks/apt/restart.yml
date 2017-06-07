@@ -1,8 +1,0 @@
----
-
-- name: Jenkins is running
-  service:
-    name: jenkins
-    state: restarted
-
-- pause: seconds=15

@@ -7,23 +7,29 @@
     update_cache: yes
   with_items: "{{ common_dependencies }}"
 
+- easy_install:
+    name: pip
+    state: latest
+
 - name: ensure guest-utils for virtualbox image
   become: yes
   apt:
     pkg: "{{ _guest_utils }}"
     state: present
 
-- name: configure ssh daemon
+- name: Configure SSH daemon.
   lineinfile:
-    dest: /etc/ssh/sshd_config
+    dest: /etc/ssh/ssh_config
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     state: present
   with_items:
-    - regexp: 'UseDNS'
+    - regexp: '^UseDNS'
       line: 'UseDNS no'
     - regexp: '^GSSAPIAuthentication'
       line: 'GSSAPIAuthentication no'
+    - regexp: '^PermitRootLogin without-password'
+      line: 'PermitRootLogin without-password'
 
 - name: Ensure correct kernel headers are installed.
   shell: "apt-get -y install linux-headers-$(uname -r)"
@@ -47,18 +53,3 @@
     - apt-daily
     - apt-daily.service
     - apt-daily.timer
-
-- name: Ensure we got docker apt repo
-  apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-xenial main' state=present
-
-- name: Ensure we got docker gpg key
-  apt_key: keyserver=hkp://p80.pool.sks-keyservers.net:80 id=58118E89F3A912897C070ADBF76221572C52609D
-
-- name: Ensure apt cache is updated.
-  apt: update_cache=yes
-
-- name: Has docker
-  apt: name=docker-engine force=yes state=present
-
-- name: Add vagrant to docker group
-  user: name=vagrant groups=docker append=yes
