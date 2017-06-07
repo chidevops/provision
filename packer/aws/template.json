@@ -28,7 +28,7 @@
     },
     {
       "type": "ansible-local",
-      "playbook_file": "ansible/aws-playbook.yml"
+      "playbook_file": "../ansible/aws-playbook.yml"
     }],
   "post-processors":
     [{

@@ -17,7 +17,15 @@
         - regexp: '^GSSAPIAuthentication'
           line: 'GSSAPIAuthentication no'
 
-    - apt: "name={{ item }} state=installed"
+    - name: Set up authorized_keys for the deploy user
+      authorized_key: user=vagrant
+                      state=present
+                      key="{{ item }}"
+      with_file:
+        - ssh_config/id_rsa.pub
+
+    - name: Install common software
+      apt: "name={{ item }} state=installed"
       with_items:
         - apt-transport-https
         - ca-certificates

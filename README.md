@@ -35,6 +35,6 @@ That script can be located in the repository under brew_install.sh (ensure you m
 
 If you cannot use brew (linux, windows) you can download VirtualBox [here](https://www.virtualbox.org/wiki/Downloads), Vagrant [here](https://www.vagrantup.com/downloads.html) and Packer [here](https://www.packer.io/downloads.html).
 
-The initial pulling of the Ubuntu 14.04 iso image takes a moment, so I recommend pulling this repository and run the initial ```virtualbox.yml``` file with Packer by running ```packer build virtualbox.yml``` which should (slowly) setup an ubuntu image for Vagrant, an awd AMI, and a Dockerfile.
+The initial pulling of the Ubuntu 14.04 iso image takes a moment, so I recommend pulling this repository and run the initial ```virtualbox.yml``` file with Packer by running ```packer build -var-file=vars.json template.yml``` which should (slowly) setup an ubuntu image for Vagrant, an awd AMI, and a Dockerfile.
 
 ![Imgur](http://i.imgur.com/rlllt0f.png)
