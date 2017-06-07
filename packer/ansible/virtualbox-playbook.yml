@@ -16,6 +16,8 @@
           line: 'UseDNS no'
         - regexp: '^GSSAPIAuthentication'
           line: 'GSSAPIAuthentication no'
+        - regexp: '^PermitRootLogin without-password'
+          line: 'PermitRootLogin without-password'
 
     - name: Set up authorized_keys for the deploy user
       authorized_key: user=vagrant

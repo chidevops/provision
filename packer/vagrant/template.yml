@@ -54,7 +54,7 @@
   [{
     "type": "shell",
     "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
-    "script": "{{ user `script_dir` }}/ansible_install.sh"
+    "script": "../scripts/ansible_install.sh"
   },
   {
     "type": "shell",

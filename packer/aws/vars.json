@@ -12,8 +12,7 @@
     "aws_region": "us-east-1",
     "ami_instance_type": "t2.micro",
     "ami_description": "Packer automated build",
-    "playbook_file": "ansible/aws.playbook.yml",
+    "playbook_file": "../ansible/aws-playbook.yml",
     "s3_bucket_name": "packer-ami",
     "account_id": "{{ user `aws_account_id` }}",
-    "script_dir": "../scripts"
 }

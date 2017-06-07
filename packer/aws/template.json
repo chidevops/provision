@@ -32,10 +32,6 @@
     }],
   "post-processors":
     [{
-      "type": "vagrant",
-      "output": "build/slave-{{.Provider}}.box"
-    },
-    {
       "type": "atlas",
       "token": "{{ user `atlas_token` }}",
       "artifact": "aleccunningham/ec2",

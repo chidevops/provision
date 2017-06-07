@@ -20,17 +20,25 @@
   "provisioners":
   [{
     "type": "shell",
-    "inline": [
-        "apt-get -y update",
-        "apt-get install -y python-pip python-dev build-essential libssl-dev libffi-dev python-dev",
-        "easy_install pip",
-        "pip install ansible"
+    "scripts": [
+      "../scripts/ansible_install.sh"
     ]
+  },
+  {
+    "type": "ansible",
+    "playbook_file": "../ansible/docker-playbook.yml"
   }],
   "post-processors":
   [{
     "type": "docker-tag",
-    "repository": "aleccunningham/demo",
+    "repository": "050532389887.dkr.ecr.us-west-2.amazonaws.com/chidevops",
     "tag": "0.1"
+  },
+  {
+    "type": "docker-push",
+    "ecr_login": true,
+    "aws_access_key": "{{ user `aws_access_key` }}",
+    "aws_secret_key": "{{ user `aws_secret_key` }}",
+    "login_server": "0505-3238-9887.dkr.ecr.us-west-2.amazonaws.com"
   }]
 }
