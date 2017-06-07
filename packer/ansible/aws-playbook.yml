@@ -1,6 +1,20 @@
 ---
 - hosts: all
-  connection: local
   become: yes
+  gather_facts: yes
+  remote_user: vagrant
+  tasks:
+    - name: ensure .ssh directory exists
+      file:
+        path: "/home/vagrant/.ssh"
+        mode: 0700
+        owner: vagrant
+        state: directory
+
+    - name: authorized key upload
+      authorized_key: user=vagrant
+        key="{{ lookup('file', 'ssh_config/id_rsa.pub') }}"
+        path='/home/vagrant/.ssh/authorized_keys'
+        manage_dir=no
   roles:
     - common

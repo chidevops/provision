@@ -1,7 +1,0 @@
----
-- name: ensure postgres packages
-  apt: name={{ item }} state=present
-  with_items:
-    - postgresql
-    - postgresql-contrib
-    - postgresql-server-dev-9.1

@@ -25,8 +25,12 @@
     ]
   },
   {
-    "type": "ansible",
-    "playbook_file": "../ansible/docker-playbook.yml"
+    "type": "ansible-local",
+    "playbook_file": "../ansible/docker-playbook.yml",
+    "role_paths": [
+      "../ansible/roles/common",
+      "../ansible/roles/aws"
+    ]
   }],
   "post-processors":
   [{

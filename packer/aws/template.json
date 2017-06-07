@@ -19,16 +19,17 @@
   "provisioners":
     [{
       "type": "shell",
-      "inline": [
-        "sleep 30",
-        "sudo apt-add-repository ppa:rquillo/ansible",
-        "sudo /usr/bin/apt-get update",
-        "sudo /usr/bin/apt-get -y install ansible"
+      "scripts": [
+        "../scripts/ansible_install.sh"
       ]
     },
     {
       "type": "ansible-local",
-      "playbook_file": "../ansible/aws-playbook.yml"
+      "playbook_file": "../ansible/aws-playbook.yml",
+      "role_paths": [
+        "../ansible/roles/common",
+        "../ansible/roles/aws"
+      ]
     }],
   "post-processors":
     [{
