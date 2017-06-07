@@ -9,4 +9,4 @@ variables.yml
 *.box
 output-virtualbox-iso
 WORKSHOP.md
-answer0/
+id_rsa
