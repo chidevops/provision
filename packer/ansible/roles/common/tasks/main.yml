@@ -11,12 +11,6 @@
     name: pip
     state: latest
 
-- name: ensure guest-utils for virtualbox image
-  become: yes
-  apt:
-    pkg: "{{ _guest_utils }}"
-    state: present
-
 - name: Configure SSH daemon.
   lineinfile:
     dest: /etc/ssh/ssh_config

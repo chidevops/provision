@@ -1,0 +1,3 @@
+---
+guest_utils:
+  - virtualbox-guest-utils

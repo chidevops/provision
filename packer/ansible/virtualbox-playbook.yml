@@ -18,4 +18,4 @@
         manage_dir=no
   roles:
     - common
-    - aws
+    - vb_guest

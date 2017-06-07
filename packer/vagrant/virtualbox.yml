@@ -60,8 +60,8 @@
     "type": "ansible-local",
     "playbook_file": "../ansible/virtualbox-playbook.yml",
     "role_paths": [
-      "../ansible/roles/common",
-      "../ansible/roles/aws"
+      "../ansible/roles/vb_guest",
+      "../ansible/roles/common"
     ]
   }]
 }

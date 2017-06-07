@@ -1,0 +1,6 @@
+---
+- name: ensure guest-utils for virtualbox image
+  become: yes
+  apt:
+    pkg: "{{ guest_utils }}"
+    state: present

@@ -1,4 +1,4 @@
-_common_dependencies:
+common_dependencies:
     - build-essential
     - curl
     - gcc
@@ -17,6 +17,3 @@ _common_dependencies:
     - zsh
     - htop
     - ntp
-
-_guest_utils:
-  - virtualbox-guest-utils
