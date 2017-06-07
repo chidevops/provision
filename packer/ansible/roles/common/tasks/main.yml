@@ -40,10 +40,3 @@
     name=ntp
     enabled=yes
     state=started
-
-- name: Disable automatic apt get updates
-  shell: systemctl disable  {{item}}
-  with_items:
-    - apt-daily
-    - apt-daily.service
-    - apt-daily.timer
