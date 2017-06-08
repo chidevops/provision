@@ -35,6 +35,6 @@ That script can be located in the repository under brew_install.sh (ensure you m
 
 If you cannot use brew (windows, etc) you can download VirtualBox [here](https://www.virtualbox.org/wiki/Downloads), Vagrant [here](https://www.vagrantup.com/downloads.html) and Packer [here](https://www.packer.io/downloads.html).
 
-The initial pulling of the Ubuntu 14.04 iso image takes a moment, so I recommend pulling this repository ```cd``` into ```vagrant/``` and run the initial ```vagrant up``` which should (slowly) setup an ubuntu image for Vagrant.
+The initial pulling of the Ubuntu 14.04 iso image takes a moment, so I recommend pulling this repository ```cd``` into ```vagrant/``` and run the initial ```vagrant up``` which should (slowly) setup an ubuntu image for Vagrant. 
 
 ![Imgur](http://i.imgur.com/rlllt0f.png)
