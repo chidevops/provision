@@ -47,5 +47,3 @@ If you cannot use brew (windows, etc) you can download VirtualBox [here](https:/
 The initial pulling of the Ubuntu 14.04 iso image takes a moment, so I recommend pulling this repository ```cd``` into ```vagrant/``` and run the initial ```vagrant up``` which should (slowly) setup an ubuntu image for Vagrant.
 
 ![Imgur](http://i.imgur.com/rlllt0f.png)
-
-[![asciicast](https://asciinema.org/a/7beg5bdcvpi7i0j2gu9f4sxfb.png)](https://asciinema.org/a/7beg5bdcvpi7i0j2gu9f4sxfb)
